@@ -2,8 +2,8 @@
 
 The purpose of this repository is to refamiliarize myself with Golang, practice new concepts, and create foundations for my Golang education.
 
-Basic REST concepts:
-REST uses only four basic commands for its protocol over HTTP:
+**Basic REST concepts:
+REST uses only four basic commands for its protocol over HTTP:**
 
 - `GET`: Clients can request the status of a resource by making an HTTP GET request to the server, using the resource's URI (Uinque Resource Identifier). REST requires that thsi operation does not produce any side effect to the resource's status (nullipotent)
 - `PUT`: Creates a new resource. Since the client does not know the next invoice number, the URI can be: http://www.mysite.com/invoice/841 (for example) is (and must be) idempotent. Invoice 841 must not be created multiple times if clients call that PUT requests several times.
