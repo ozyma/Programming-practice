@@ -4,9 +4,6 @@ import (
 	"fmt"
 )
 
-/*
-Originally, I had
-*/
 type car struct {
 	name  string
 	speed int32
