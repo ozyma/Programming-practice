@@ -10,5 +10,6 @@ func main() {
 	)
 	fmt.Println("hello test!")
 	fmt.Println(x, y, z)
+	fmt.Scanln()
 
 }
