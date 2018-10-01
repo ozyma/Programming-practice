@@ -2,7 +2,7 @@
 
 Traversy media put out a tutorial on YouTube going over basic REST concepts and building an API using he gorilla/mux package. 
 
-Everything finally fucking clicked today with this project, as I annotated this block of code:
+**Everything finally fucking clicked today with this project, as I annotated this block of code:**
 
 ```go
 //Create a new book function
