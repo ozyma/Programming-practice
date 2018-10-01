@@ -46,3 +46,4 @@ This information also exists in the `headers` of the HTTP requests and responses
 
 in the above code. It will be up to the requester to send their correct `HTTP Headers` if they want to interact with my program, and it's also up to me to specify what headers I will need. REST API's for `json` will essentially always be `application/json`. In my case, I am setting the `Content-Type` Header to `application/json` so that when I send back my response, that server will know I am sending content in my response meant to be read as `json`
 
+![](README-img/Golang-HTTP-data-flow.png)
