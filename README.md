@@ -36,7 +36,7 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 
 In the function `createBook()` I am passing in two **optional** parameters. An http request from an outside source (`r *http.Request`, making `r` my variable for the `*http.Request` variable type), and then choosing to respond back to the requester (optional) using the `w http.ResponseWriter` (`w` being the variable for the `http.ResponseWriter` variable type).
 
-# HTTP protocol
+## HTTP protocol
 HTTP sends shit via codes... **I need to memorize these codes**, but here are the most commonly referred to/used:
 - `200` OK
 - `400` Bad Request
@@ -61,6 +61,23 @@ in the above code. It will be up to the requester to send their correct `HTTP He
 
 ![](2018-09-30-REST-API-testing/README-img/Golang-HTTP-data-flow.png)
 
-# bbolt
+## bbolt
 
 On the 1st of October, I did not get as far with the understanding of the database as I would have liked. I will return to it.
+
+## Correctly initializing struct variables that have an `[]array` type
+
+I put a field `fillings` with the type of `[]string`, and I had trouble initializing a new variable with that array type. The proper way to initialize my variable, `crabbymelt`, was the following:
+
+```go
+type grilledcheese struct {
+	bread    string
+	cheese   string
+	fillings []string
+	price    float32
+}
+
+crabbymelt := grilledcheese{"sourdough", "mozzerella", []string{"crab meat", "old bay", "scallions"}, 8.99}
+```
+
+We can see that I needed to input a `[]string` type of variables directly into my initializtion parameters for the `crabbymelt` variable. I can't use: `{"crab meat", "old bay", "scallions"}` It won't won't work, because I have not let the new `grilledcheese` object know that I'm sending these variables into memory as a `[]string` arrangement. It will only try to send in the variables in sequence, not a `[]string` sequence.
