@@ -36,6 +36,7 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 
 In the function `createBook()` I am passing in two **optional** parameters. An http request from an outside source (`r *http.Request`, making `r` my variable for the `*http.Request` variable type), and then choosing to respond back to the requester (optional) using the `w http.ResponseWriter` (`w` being the variable for the `http.ResponseWriter` variable type).
 
+# HTTP protocol
 HTTP sends shit via codes... **I need to memorize these codes**, but here are the most commonly referred to/used:
 - `200` OK
 - `400` Bad Request
