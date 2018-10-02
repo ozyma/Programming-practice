@@ -17,7 +17,7 @@ To handle success or errors issues, HTTP REST recommends using one of the HTTP s
 **Everything finally fucking clicked today with this project, as I annotated this block of code:**
 
 ```go
-//Create a new book function
+//Create a new book function uses pointer receiver so reduce expense of reading. we don't need a copy of the request bogging down our throughput
 func createBook(w http.ResponseWriter, r *http.Request) {
 	//formats the HTTP headers we will send back when we write our response
 	w.Header().Set("Content-Type", "application/json")
@@ -34,7 +34,7 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-In the function `createBook()` I am passing in two **optional** parameters. An http request from an outside source (`r *http.Request`, making `r` my variable for the `*http.Request` variable type), and then choosing to respond back to the requester (optional) using the `w http.ResponseWriter` (`w` being the variable for the `http.ResponseWriter` variable type).
+In the function `createBook()` I am passing in two **optional** parameters. An http request from an outside source (`r *http.Request`, making `r` my variable for the `*http.Request` variable type), and then choosing to respond back to the requester (optional) using the `w http.ResponseWriter` (`w` being the variable for the `http.ResponseWriter` variable type). We use a pointer receiver for `http.Request` because it's less expensive than having to make a copy of the request we are receiving. We could potentially receive a hefty HTTP request and
 
 ## HTTP protocol
 HTTP sends shit via codes... **I need to memorize these codes**, but here are the most commonly referred to/used:
@@ -81,3 +81,21 @@ crabbymelt := grilledcheese{"sourdough", "mozzerella", []string{"crab meat", "ol
 ```
 
 We can see that I needed to input a `[]string` type of variables directly into my initializtion parameters for the `crabbymelt` variable. I can't use: `{"crab meat", "old bay", "scallions"}` It won't won't work, because I have not let the new `grilledcheese` object know that I'm sending these variables into memory as a `[]string` arrangement. It will only try to send in the variables in sequence, not a `[]string` sequence.
+
+## From the Golang website on pointer vs. value receivers
+Should I define methods on values or pointers? ¶
+```go
+func (s *MyStruct) pointerMethod() { } // method on pointer
+func (s MyStruct)  valueMethod()   { } // method on value
+```
+For programmers unaccustomed to pointers, the distinction between these two examples can be confusing, but the situation is actually very simple. When defining a method on a type, the receiver (s in the above examples) behaves exactly as if it were an argument to the method. Whether to define the receiver as a value or as a pointer is the same question, then, as whether a function argument should be a value or a pointer. There are several considerations.
+
+First, and most important, does the method need to modify the receiver? If it does, the receiver must be a pointer. (Slices and maps act as references, so their story is a little more subtle, but for instance to change the length of a slice in a method the receiver must still be a pointer.) In the examples above, if `pointerMethod` **modifies the fields of `s`, the caller will see those changes**, but `valueMethod` **is called with a copy of the caller's argument (that's the definition of passing a value)**, so changes it makes will be invisible to the caller.
+
+By the way, in Java method receivers are always pointers, although their pointer nature is somewhat disguised (and there is a proposal to add value receivers to the language). It is the value receivers in Go that are unusual.
+
+Second is the consideration of efficiency. **If the receiver is large, a big struct for instance, it will be much cheaper to use a pointer receiver.**
+
+Next is consistency. If some of the methods of the type must have pointer receivers, the rest should too, so the method set is consistent regardless of how the type is used. See the section on method sets for details.
+
+For types such as basic types, slices, and small structs, a value receiver is very cheap so unless the semantics of the method requires a pointer, a value receiver is efficient and clear.
