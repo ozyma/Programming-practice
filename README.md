@@ -34,7 +34,9 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-In the function `createBook()` I am passing in two **optional** parameters. An http request from an outside source (`r *http.Request`, making `r` my variable for the `*http.Request` variable type), and then choosing to respond back to the requester (optional) using the `w http.ResponseWriter` (`w` being the variable for the `http.ResponseWriter` variable type). We use a pointer receiver for `http.Request` because it's less expensive than having to make a copy of the request we are receiving. We could potentially receive a hefty HTTP request and
+In the function `createBook()` I am passing in two **optional** parameters. An http request from an outside source (`r *http.Request`, making `r` my variable for the `*http.Request` variable type), and then choosing to respond back to the requester (optional) using the `w http.ResponseWriter` (`w` being the variable for the `http.ResponseWriter` variable type). We use a pointer receiver for `http.Request` because it's less expensive than having to make a copy of the request we are receiving. We could potentially receive a hefty HTTP request and slow down our copy by just using a value receiver copy. We also use a pointer receiver because we want to be able to modify that data. i.e.
+- what if we need to change the encoding of the request coming in?
+- what if the HTTP headers are incorrect, and we build something to correctly detect and parse newer, correct information.
 
 ## HTTP protocol
 HTTP sends shit via codes... **I need to memorize these codes**, but here are the most commonly referred to/used:
