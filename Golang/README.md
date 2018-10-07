@@ -101,3 +101,6 @@ Second is the consideration of efficiency. **If the receiver is large, a big str
 Next is consistency. If some of the methods of the type must have pointer receivers, the rest should too, so the method set is consistent regardless of how the type is used. See the section on method sets for details.
 
 For types such as basic types, slices, and small structs, a value receiver is very cheap so unless the semantics of the method requires a pointer, a value receiver is efficient and clear.
+
+## Default http package tips
+When we use `http.ListenAndServe(":8000", nil)` in our code, we are using nil to default to the Go constant DefaultMuxValue. The http package uses this internal variable as the default fallback unless another server with a new variable. So unless you are naming your servers, or using `gorilla/mux` there isn't a need to make another variable outside the pre-made default variable our http package comes with.

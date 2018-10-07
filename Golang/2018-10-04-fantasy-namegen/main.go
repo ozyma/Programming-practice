@@ -58,6 +58,16 @@ func main() {
 	title[7] = "Hunter"
 	title[8] = "Assassin"
 	title[9] = "Hypo Junkie"
+	title[10] = "Hacker"
+	title[11] = "Cyborg"
+	title[12] = "Cultist"
+	title[13] = "Commander"
+	title[14] = "Scavenger"
+	title[15] = "Flayer"
+	title[16] = "Executioner"
+	title[17] = "Doctor"
+	title[18] = "Guard"
+	title[19] = "Hitman"
 
 	//Randomly generate names 10 times
 	for i := 0; i < 100; i++ {
@@ -69,7 +79,7 @@ func main() {
 		randprefix := prefix[randnumber.Intn(10)]
 		randmiddle := middle[randnumber.Intn(10)]
 		randsuffix := suffix[randnumber.Intn(10)]
-		randtitle := title[randnumber.Intn(10)]
+		randtitle := title[randnumber.Intn(20)]
 
 		//using %v verb for Printf in order to format my string varliables correctly
 		fmt.Printf("%v%v%v, the %v", randprefix, randmiddle, randsuffix, randtitle)
