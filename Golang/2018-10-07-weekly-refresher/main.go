@@ -82,11 +82,20 @@ const index string = `<!doctype html>
 
 const newIndex string = `<!DOCTYPE html>
 <html>
-<title>HTML Tutorial</title>
-<body>
-
-<h1>This is a heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
+    <head>
+        <script>
+        function myFunction(){
+            document.getElementById("demo").innerHTML = "Go fuck yourself";
+        }
+        function myOtherFunction(){
+            document.getElementById("demo").innerHTML = "Paragraph changed on button click using myOtherFunction()";
+        }
+        </script>
+    </head>
+    <body>
+        <h1>A webpage with javascript functionality</h1>
+        <p id="demo">A paragraph</p>
+        <button type="button" onclick="myFunction()">Click me to change paragraph with id "demo"</button>
+        <button type="button" onclick="myOtherFunction()">Click me to change paragraph with id "demo"</button>
+    </body>
 </html>`
