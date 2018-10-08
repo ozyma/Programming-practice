@@ -17,7 +17,7 @@ To handle success or errors issues, HTTP REST recommends using one of the HTTP s
 **Everything finally fucking clicked today with this project, as I annotated this block of code:**
 
 ```go
-//Create a new book function uses pointer receiver so reduce expense of reading. we don't need a copy of the request bogging down our throughput
+//Create a new book function uses pointer receiver to reduce expense of reading. we don't need a copy of the request bogging down our throughput
 func createBook(w http.ResponseWriter, r *http.Request) {
 //formats the HTTP headers we will send back when we write ourresponse
 w.Header().Set("Content-Type", "application/json")
@@ -221,7 +221,7 @@ null == undefined          // true
 
 ### Complex Data
 
-The typeof operator can return one of two complex types:
+The **typeof** operator can return one of two complex types:
 
 - function
 - object
