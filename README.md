@@ -138,3 +138,5 @@ Example:
 ```javascript
 var cars = ["Saab", "Volvo", "BMW"];
 ```
+
+Array indexes are zero-based, which means the first item is [0], second is [1], and so on.
