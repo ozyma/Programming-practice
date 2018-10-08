@@ -104,3 +104,12 @@ For types such as basic types, slices, and small structs, a value receiver is ve
 
 ## Default http package tips
 When we use `http.ListenAndServe(":8000", nil)` in our code, we are using nil to default to the Go constant DefaultMuxValue. The http package uses this internal variable as the default fallback unless another server with a new variable. So unless you are naming your servers, or using `gorilla/mux` there isn't a need to make another variable outside the pre-made default variable our http package comes with.
+
+## javascript output
+
+Javascript can "display" data in different ways:
+
+- Writing into an HTML element, using **innerHTML**
+- Writing into the HTML output using **document.write()**
+- Writing into an alert box, using **window.alert()**
+- Writing into the browser console, using **console.log()**
