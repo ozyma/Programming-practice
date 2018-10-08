@@ -1,4 +1,4 @@
-# golang-practice
+# Learning Golang, Javascript, and HTML
 
 The purpose of this repository is to refamiliarize myself with Golang, practice new concepts, and create foundations for my Golang education.
 
@@ -19,18 +19,18 @@ To handle success or errors issues, HTTP REST recommends using one of the HTTP s
 ```go
 //Create a new book function uses pointer receiver so reduce expense of reading. we don't need a copy of the request bogging down our throughput
 func createBook(w http.ResponseWriter, r *http.Request) {
-	//formats the HTTP headers we will send back when we write our response
-	w.Header().Set("Content-Type", "application/json")
-	//new variable, of the custom type Book that we made (the struct above)
-	var book Book
-	//takes the request sent to us (in json) and Decodes it into our &book variable we declared
-	_ = json.NewDecoder(r.Body).Decode(&book)
-	//randomly generates an id for our book up to the number 100000000, then applies to the "ID" of our book variable (mock id - not safe)
-	book.ID = strconv.Itoa(rand.Intn(100000000))
-	//takes all the data we've randomly generated and Decoded from the JSON request sent, and appends it into our []books array of Book type objects
-	books = append(books, book)
-	//Writes a response (variable "w") to the requester with a JSON encoding of the book variable we created through this process
-	json.NewEncoder(w).Encode(book)
+//formats the HTTP headers we will send back when we write ourresponse
+w.Header().Set("Content-Type", "application/json")
+//new variable, of the custom type Book that we made (the structabove)
+var book Book
+//takes the request sent to us (in json) and Decodes it into our book variable we declared
+_ = json.NewDecoder(r.Body).Decode(&book)
+//randomly generates an id for our book up to the number 100000000,then applies to the "ID" of our book variable (mock id - not safe)
+book.ID = strconv.Itoa(rand.Intn(100000000))
+//takes all the data we've randomly generated and Decoded from theJSON request sent, and appends it into our []books array of Booktype objects
+books = append(books, book)
+//Writes a response (variable "w") to the requester with a JSONencoding of the book variable we created through this process
+json.NewEncoder(w).Encode(book)
 }
 ```
 
@@ -113,3 +113,28 @@ Javascript can "display" data in different ways:
 - Writing into the HTML output using **document.write()**
 - Writing into an alert box, using **window.alert()**
 - Writing into the browser console, using **console.log()**
+
+## Javascript data types
+
+JavaScript Types are Dynamic, not static
+
+JavaScript has dynamic types. This means that the same variable can be used to hold different data types:
+
+Example:
+```javascript
+var x;           // Now x is undefined
+x = 5;           // Now x is a Number
+x = "John";      // Now x is a String
+```
+
+**JavaScript arrays** are written with square brackets.
+
+Array items are separated by commas.
+
+The following code declares (creates) an array called cars, containing three items (car names):
+
+Example:
+
+```javascript
+var cars = ["Saab", "Volvo", "BMW"];
+```
