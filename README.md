@@ -127,7 +127,29 @@ x = 5;           // Now x is a Number
 x = "John";      // Now x is a String
 ```
 
-**JavaScript arrays** are written with square brackets.
+### Primitive Data
+A primitive data value is a single simple data value with no additional properties and methods.
+
+The typeof operator can return one of these primitive types:
+
+- string
+- number
+- boolean
+- undefined
+
+Example:
+
+```javascript
+typeof "John"              // Returns "string" 
+typeof 3.14                // Returns "number"
+typeof true                // Returns "boolean"
+typeof false               // Returns "boolean"
+typeof x                   // Returns "undefined" (if x has no value)
+```
+
+### JavaScript arrays
+
+Are written with square brackets.
 
 Array items are separated by commas.
 
@@ -140,3 +162,79 @@ var cars = ["Saab", "Volvo", "BMW"];
 ```
 
 Array indexes are zero-based, which means the first item is [0], second is [1], and so on.
+
+### JavaScript objects
+
+Are written with curly braces.
+
+Object properties are written as name:value pairs, separated by commas.
+
+Example:
+
+```javascript
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+```
+You can use the JavaScript **typeof operator** to find the type of a JavaScript variable.
+
+### The typeof operator
+
+returns the type of a variable or an expression:
+
+Example:
+
+```javascript
+typeof ""                  // Returns "string"
+typeof "John"              // Returns "string"
+typeof "John Doe"          // Returns "string"
+typeof 3.14                // Returns "number"
+typeof (3)                 // Returns "number"
+typeof (3 + 4)             // Returns "number"
+var car;                   // Value is undefined, type is undefined
+```
+
+**Null**
+
+In JavaScript null is "nothing". It is supposed to be something that doesn't exist.
+
+Unfortunately, in JavaScript, the data type of null is an object.
+
+You can consider it a bug in JavaScript that typeof null is an object. It should be null.
+
+You can empty an object by setting it to null:
+
+Example:
+
+```javascript
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+person = null;        // Now value is null, but type is still an object
+```
+
+Undefined and null are equal in value but different in type:
+
+```javascript
+typeof undefined           // undefined
+typeof null                // object
+
+null === undefined         // false
+null == undefined          // true
+```
+
+### Complex Data
+
+The typeof operator can return one of two complex types:
+
+- function
+- object
+
+The typeof operator returns object for both objects, arrays, and null.
+
+The typeof operator does not return object for functions.
+
+Example:
+
+```javascript
+typeof {name:'John', age:34} // Returns "object"
+typeof [1,2,3,4]             // Returns "object" (not "array", see note below)
+typeof null                  // Returns "object"
+typeof function myFunc(){}   // Returns "function"
+```
