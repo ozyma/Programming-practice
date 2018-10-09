@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
-    <body>
-        <h1>Here's out first header1</h1>
-        <h2>Here's our first header2</h2>
-        <p id="text"></p>
-        <p id="demo"></p>
 
-        <script> //must come after the id has been set for our paragraph
-                var x = 5;
-                var y = 7;
-                var z = x + y;
-                console.log(z)
-                document.getElementById("demo").innerHTML = z;
+<head>
+</head>
 
-                var txt1 = "John";
-                var txt2 = "Doe";
-                var txt3 = txt1 + " " + txt2;
-                document.getElementById("text").innerHTML = txt3;
-        </script>
-    </body>
+<body>
+    <h1>Here's out first header1</h1>
+    <h2>Here's our first header2</h2>
+    <p id="text"></p>
+    <p id="demo"></p>
+
+    <script>
+        //must come after the id has been set for our paragraph
+        var x = 5;
+        var y = 7;
+        var z = x + y;
+        console.log(z)
+        document.getElementById("demo").innerHTML = z;
+
+        var txt1 = "John";
+        var txt2 = "Doe";
+        var txt3 = txt1 + " " + txt2;
+        document.getElementById("text").innerHTML = txt3;
+    </script>
+</body>
+
 </html>
