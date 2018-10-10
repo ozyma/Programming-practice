@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"io/ioutil"
+	"log"
+	"net/http"
 )
 
 //Page struct will be used to store a wiki page for us.
@@ -31,10 +34,31 @@ func loadPage(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
+func viewhandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/view/"):]
+	p, _ := loadPage(title)
+	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
+}
+
+func edithandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/edit/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	t, _ := template.ParseFiles("edit.html")
+	t.Execute(w, p)
+}
+
 func main() {
 	p1 := &Page{Title: "TestPage", Body: []byte("This is a simple page.")}
 	p1.save()
 	p2, _ := loadPage("TestPage")
 	fmt.Println(string(p2.Body))
+
+	http.HandleFunc("/view/", viewhandler)
+	http.HandleFunc("/edit/", edithandler)
+	//http.HandleFunc("/save/", savehandler)
+	log.Fatal(http.ListenAndServe(":8081", nil))
 
 }
