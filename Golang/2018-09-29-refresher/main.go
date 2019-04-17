@@ -19,6 +19,8 @@ func main() {
 	fmt.Println(corvette.name)
 	fmt.Println(corvette.cost)
 	fmt.Println(corvette.speed)
+	fmt.Println("welcome!")
+	
 	fmt.Println("hello test!")
 	fmt.Println(x, y, z)
 	fmt.Scanln()
